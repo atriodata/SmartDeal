@@ -12,7 +12,6 @@ import com.atrio.smartdeal.model.SearchDataModel
 class DataAdapter (private val dataList : ArrayList<SearchDataModel>, private val listener : Listener) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
     interface Listener {
-
         fun onItemClick(android : SearchDataModel)
     }
 
