@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         loadJSON()
     }
 
+
     private fun loadJSON() {
         val requestInterface = Retrofit.Builder()
                 .baseUrl(BASE_URL)
