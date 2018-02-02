@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun getProductSearch() {
 
-
-
         val retrofitobject= Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
         val apiService=retrofitobject.create(ApiInterface::class.java)
         val call=apiService.getProductList(searchItem!!,API_KEY)
