@@ -1,15 +1,12 @@
-package com.atrio.smartdeal.adapter
+package com.atrio.smartdeal
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.atrio.smartdeal.R
+
 import com.atrio.smartdeal.model.ProductList
 
-/**
- * Created by Admin on 02-02-2018.
- */
 class DataAdapter (private val dataList : ArrayList<ProductList>, private val listener : Listener) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
     interface Listener {
         fun onItemClick(android: ProductList)

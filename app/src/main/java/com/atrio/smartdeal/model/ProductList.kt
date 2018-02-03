@@ -7,3 +7,4 @@ import com.atrio.smartdeal.ProductData
  */
 data class ProductList(val data:List<ProductData> ,
                        val meta:Meta)
+
