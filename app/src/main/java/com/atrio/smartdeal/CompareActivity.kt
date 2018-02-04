@@ -45,12 +45,14 @@ class CompareActivity : AppCompatActivity() {
                 Log.i("getproductList11", response.code().toString())
                 Log.i("getproductList1", response.body().toString())
                 var mpricelist=response.body()
-                product1.text="Amazon Price : Rs."+mpricelist!!.amazon
+                if (mpricelist!!.amazon!=null || mpricelist.flipkart!=null || mpricelist.ebay!=null || mpricelist.paytm!=null || mpricelist.snapdeal!=null)
+                {
+                product1.text="Amazon Price : Rs."+mpricelist.amazon
                 product2.text="FlipKart Price : Rs."+mpricelist.flipkart
                 product3.text="Ebay Price : Rs."+mpricelist.ebay
                 product4.text="Paytm Price : Rs."+mpricelist.paytm
                 product5.text="SnapDeal Price : Rs."+mpricelist.snapdeal
-
+            }
             }
 
         })

@@ -56,9 +56,10 @@ class MainActivity : AppCompatActivity() {
                 Log.i("getproductList1", response.body().toString())
                 Log.i("getproductList2", response.body()?.data?.size.toString())
                 var mproductlist=response.body()
-                rv_android_list.adapter=CustomAdapter(mproductlist!!.data,R.layout.custom_recycle_main, applicationContext)
+                if (mproductlist!=null){
+                rv_android_list.adapter=CustomAdapter(mproductlist.data,R.layout.custom_recycle_main, applicationContext)
                 Log.i("gotdata23", mproductlist.toString())
-            }
+            } }
 
         })
     }
