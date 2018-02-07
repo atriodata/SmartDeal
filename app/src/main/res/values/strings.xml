@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">SmartDeal</string>
+    <string name="otp_verify">A OTP has been send to your mobile no. Please enter the OTP below to Verify your Mobile Number</string>
+    <string name="password_toggle_content_description">Toggle password visibility</string>
+    <string name="referrer_hint">Deep link not provided</string>
+    <string name="search_hint">Search...</string>
+    <string name="select_country">Select a county</string>
+    <string name="send_failed">Sending invitations failed</string>
+    <string name="sent_invitations_fmt">Sent %d invitations</string>
+    <string name="verify_phn">We will send an SMS message to verify your phone number.Enter your country code and phone number.</string>
+    <string name="welcome">Invites</string>
+    <string name="veryfy_phn_no_text">Verify Your Phone Number</string>
+    <string name="enter_phn">Enter Phone Number</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="verify_otp">Verify OTP</string>
 </resources>

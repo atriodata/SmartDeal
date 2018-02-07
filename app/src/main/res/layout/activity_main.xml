@@ -7,15 +7,14 @@
     tools:context="com.atrio.smartdeal.MainActivity">
 
 
-    <EditText
+
+    <AutoCompleteTextView
         android:id="@+id/serch_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginTop="16dp"
         android:hint="Search Product"
-        android:drawableEnd="@drawable/searcher"
-        android:drawablePadding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

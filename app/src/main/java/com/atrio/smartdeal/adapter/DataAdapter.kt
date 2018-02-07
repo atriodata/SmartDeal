@@ -1,38 +1,89 @@
-package com.atrio.smartdeal
+package `in`.android2.com.autocompletetextview_demo
 
-import android.support.v7.widget.RecyclerView
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
+import android.widget.Filter
+import android.widget.Filterable
+import android.widget.TextView
+import com.atrio.smartdeal.ProductData
 
-import com.atrio.smartdeal.model.ProductList
+import java.util.ArrayList
 
-class DataAdapter (private val dataList : ArrayList<ProductList>, private val listener : Listener) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
-    interface Listener {
-        fun onItemClick(android: ProductList)
+/**
+ * Created by IM021 on 3/31/2017.
+ */
+
+internal class DataAdapter(private val mContext: Context, private val originalList: List<ProductData>) : BaseAdapter(), Filterable {
+    private val suggestions = ArrayList<ProductData>()
+    private val filter = CustomFilter()
+
+    override fun getCount(): Int {
+        return suggestions.size
     }
 
-    private val colors: Array<String> = arrayOf("#EF5350", "#EC407A", "#AB47BC", "#7E57C2", "#5C6BC0", "#42A5F5")
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dataList[position], listener, colors, position)
+    override fun getItem(i: Int): ProductData {
+        return suggestions[i]
     }
 
-    override fun getItemCount(): Int = dataList.count()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_recycle_main, parent, false)
-        return ViewHolder(view)
+    override fun getItemId(i: Int): Long {
+        return 0
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(android: ProductList, listener: Listener, colors: Array<String>, position: Int) {
-            /*
-+            itemView.tv_name.text = android.name
-+            itemView.tv_version.text = android.version
-+            itemView.tv_api_level.text = android.apiLevel
-+            itemView.setBackgroundColor(Color.parseColor(colors[position % 6]))
-+
-+            itemView.setOnClickListener{ listener.onItemClick(android) }*/
+    override fun getView(i: Int, view: View?, viewGroup: ViewGroup): View {
+        var view = view
+        val holder: ViewHolder
+        if (view == null) {
+            val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            view = inflater.inflate(android.R.layout.activity_list_item, viewGroup, false)
+            holder = ViewHolder()
+            holder.autoText = view!!.findViewById(android.R.id.text1) as TextView
+            view.tag = holder
+        } else {
+            holder = view.tag as ViewHolder
+        }
+        holder.autoText!!.setText(suggestions[i].product_title)
+        return view
+
+    }
+
+    private class ViewHolder {
+        internal var autoText: TextView? = null
+    }
+
+    override fun getFilter(): Filter {
+        return filter
+    }
+
+    private inner class CustomFilter : Filter() {
+        override fun performFiltering(constraint: CharSequence?): Filter.FilterResults {
+            suggestions.clear()
+            // Check if the Original List and Constraint aren't null.
+            if (originalList != null && constraint != null) {
+                for (i in originalList.indices) {
+                    // Compare item in original list if it contains constraints.
+                    if (originalList[i].product_title.toLowerCase().contains(constraint)) {
+                        // If TRUE add item in Suggestions.
+                        suggestions.add(originalList[i])
+                    }
+                }
+            }
+            // Create new Filter Results and return this to publishResults;
+            val results = Filter.FilterResults()
+            results.values = suggestions
+            results.count = suggestions.size
+
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence, results: Filter.FilterResults) {
+            if (results.count > 0) {
+                notifyDataSetChanged()
+            } else {
+                notifyDataSetInvalidated()
+            }
         }
     }
 }
