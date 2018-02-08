@@ -10,28 +10,40 @@ import kotlinx.android.synthetic.main.activity_login.*
 import android.support.v4.content.ContextCompat.startActivity
 import android.content.Intent
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
 class LoginActivity : AppCompatActivity(), CountryCodePicker.OnCountryChangeListener, View.OnClickListener {
-    var isd_code: String?=null
+    var isd_code: String? = null
     var phn_no: String? = null
-
+    var user: FirebaseUser? = null
+    lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        isd_code = sp_country.getSelectedCountryCodeWithPlus()
-        Log.i("onVerify22", "" +isd_code)
-        sp_country.setOnCountryChangeListener(this)
-        btn_next.setOnClickListener(this)
+        mAuth = FirebaseAuth.getInstance()
+        user = mAuth.currentUser
+
+        if (user != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        } else {
+            isd_code = sp_country.getSelectedCountryCodeWithPlus()
+            Log.i("onVerify22", "" + isd_code)
+            sp_country.setOnCountryChangeListener(this)
+            btn_next.setOnClickListener(this)
+        }
+
 
     }
+
     override fun onClick(v: View?) {
         if (validatePhoneNumber()) {
             phn_no = isd_code + et_phone.getText().toString().trim()
             intent = Intent(this, Verify_Otp_Activity::class.java)
             intent.putExtra("phn_number", phn_no)
-            Log.i("onCodeSent4:", "" +phn_no)
             startActivity(intent)
             finish()
         }
