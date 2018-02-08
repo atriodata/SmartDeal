@@ -33,12 +33,16 @@ class CustomAdapter(val dataList: List<ProductData>, val rowLayout: Int, val con
            holder.productTitle.text = "Product :" + dataList[position].product_title
            holder.productPrice.text = "Price : " + dataList[position].product_lowest_price*/
         holder.bind(dataList[position], position)
+
     }
 
     override fun getItemCount(): Int {
         return dataList.size
     }
+   /* fun filter(text: String){
 
+    }
+*/
     class ProductViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         /*     var productImage: ImageView
              var productTitle: TextView
@@ -53,7 +57,7 @@ class CustomAdapter(val dataList: List<ProductData>, val rowLayout: Int, val con
         fun bind(product: ProductData, position: Int) {
             Picasso.with(itemView.context).load(product.product_image).resize(90, 90).into(itemView.img_prd)
             itemView.tv_name.text = product.product_title
-            itemView.tv_price.text = "Price : " + product.product_lowest_price
+            itemView.tv_price.text = "MinPrice : " + product.product_lowest_price
             itemView.setOnClickListener(View.OnClickListener {
                 Toast.makeText(itemView.context, "click" + position, Toast.LENGTH_SHORT).show()
                 val clickintent = Intent(itemView.context, CompareActivity::class.java)
@@ -65,5 +69,6 @@ class CustomAdapter(val dataList: List<ProductData>, val rowLayout: Int, val con
 
             })
         }
+
     }
 }

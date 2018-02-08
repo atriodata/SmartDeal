@@ -3,6 +3,7 @@ package com.atrio.smartdeal
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.atrio.smartdeal.R
 import com.atrio.smartdeal.model.ComapePrice
@@ -27,6 +28,12 @@ class CompareActivity : AppCompatActivity() {
         product_name.text=intent.getStringExtra("product_name")
         Picasso.with(this).load(product_image).resize(90, 90).into(imageView)
         getComparePrice()
+        product1.visibility =View.GONE
+        product2.visibility =View.GONE
+        product3.visibility =View.GONE
+        product4.visibility =View.GONE
+        product5.visibility =View.GONE
+        linearLayout2.visibility = View.GONE
     }
 
     private fun getComparePrice() {
@@ -45,15 +52,46 @@ class CompareActivity : AppCompatActivity() {
                 Log.i("getproductList11", response.code().toString())
                 Log.i("getproductList1", response.body().toString())
                 var mpricelist=response.body()
-                if (mpricelist!!.amazon!=null || mpricelist.flipkart!=null || mpricelist.ebay!=null || mpricelist.paytm!=null || mpricelist.snapdeal!=null)
-                {
-                product1.text="Amazon Price : Rs."+mpricelist.amazon
-                product2.text="FlipKart Price : Rs."+mpricelist.flipkart
-                product3.text="Ebay Price : Rs."+mpricelist.ebay
-                product4.text="Paytm Price : Rs."+mpricelist.paytm
-                product5.text="SnapDeal Price : Rs."+mpricelist.snapdeal
+                if (!mpricelist!!.amazon.isEmpty()){
+                    linearLayout2.visibility = View.VISIBLE
+                    product1.visibility = View.VISIBLE
+                    product1.text="Amazon Price : Rs."+mpricelist!!.amazon
+                }else{
+                    product1.visibility = View.INVISIBLE
+                }
+                if (!mpricelist.flipkart.isEmpty()){
+                    linearLayout2.visibility = View.VISIBLE
+                    product2.visibility = View.VISIBLE
+                    product2.text="FlipKart Price : Rs."+mpricelist.flipkart
+                }else{
+                    product2.visibility = View.INVISIBLE
+                }
+                if (!mpricelist.ebay.isEmpty()){
+                    linearLayout2.visibility = View.VISIBLE
+                    product3.visibility = View.VISIBLE
+                    product3.text="Ebay Price : Rs."+mpricelist.ebay
+                }else{
+                    product3.visibility = View.INVISIBLE
+                }
+
+                if (!mpricelist.paytm.isEmpty()){
+                    linearLayout2.visibility = View.VISIBLE
+                    product4.visibility = View.VISIBLE
+                    product4.text="Paytm Price : Rs."+mpricelist.paytm
+                }else{
+                    product4.visibility = View.INVISIBLE
+                }
+
+                if (!mpricelist.snapdeal.isEmpty()){
+                    linearLayout2.visibility = View.VISIBLE
+                    product5.visibility = View.VISIBLE
+                    product5.text="SnapDeal Price : Rs."+mpricelist.snapdeal
+                }else{
+                    product5.visibility = View.INVISIBLE
+                }
+
             }
-            }
+
 
         })
     }

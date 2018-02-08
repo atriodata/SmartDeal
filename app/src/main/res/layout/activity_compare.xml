@@ -8,12 +8,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="104dp"
+        android:layout_height="119dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:padding="10dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +28,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:padding="10dp"
+        android:textSize="17sp"
         android:text="TextView"
+        android:fontFamily="sans-serif"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +44,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:padding="10dp"
+        android:textSize="17sp"
+        android:fontFamily="sans-serif"
         android:text="Comparing Product Price With :-"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,55 +56,77 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/compare_text">
+
 
         <TextView
             android:id="@+id/product1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textColor="@color/red" />
+            android:padding="10dp"
+            android:elevation="5dp"
+            android:textSize="17sp"
+            android:fontFamily="sans-serif"
+            android:background="@color/white"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/product2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textColor="@color/red" />
+            android:padding="10dp"
+            android:elevation="5dp"
+            android:textSize="15sp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            />
 
         <TextView
             android:id="@+id/product3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textColor="@color/red" />
+            android:padding="10dp"
+            android:elevation="5dp"
+            android:textSize="15sp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/product4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textColor="@color/red" />
+            android:padding="10dp"
+            android:elevation="5dp"
+            android:textSize="15sp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif" />
 
         <TextView
             android:id="@+id/product5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textColor="@color/red" />
-
-    </LinearLayout>
+            android:padding="10dp"
+            android:elevation="5dp"
+            android:textSize="15sp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif" />
+        </LinearLayout>
 </android.support.constraint.ConstraintLayout>
