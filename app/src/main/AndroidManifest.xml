@@ -3,6 +3,10 @@
     package="com.atrio.smartdeal">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,10 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".CompareActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".Verify_Otp_Activity"/>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Verify_Otp_Activity" />
+        <activity android:name=".LocationActivity"></activity>
     </application>
 
 </manifest>

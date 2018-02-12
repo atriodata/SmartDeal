@@ -30,6 +30,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="@string/veryfy_phn_no_text"
             android:textColor="@color/endcolor" />
 
@@ -64,6 +65,7 @@
             android:inputType="phone"
             android:hint="@string/enter_phn"
             android:maxLength="15" />
+
 
         <Button
             android:id="@+id/btn_next"

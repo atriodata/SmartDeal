@@ -97,7 +97,7 @@ class Verify_Otp_Activity : AppCompatActivity() {
                     User = (task.getResult() as AuthResult).user
                     Log.d("", "onComplete: " + User)
                     Toast.makeText(this@Verify_Otp_Activity, "Ph number verified", Toast.LENGTH_SHORT).show()
-                    intent = Intent(this@Verify_Otp_Activity, MainActivity::class.java)
+                    intent = Intent(this@Verify_Otp_Activity, LocationActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else if (task.getException() is FirebaseAuthInvalidCredentialsException) {

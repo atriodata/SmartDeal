@@ -9,6 +9,8 @@ import com.hbb20.CountryCodePicker
 import kotlinx.android.synthetic.main.activity_login.*
 import android.support.v4.content.ContextCompat.startActivity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -26,6 +28,10 @@ class LoginActivity : AppCompatActivity(), CountryCodePicker.OnCountryChangeList
         mAuth = FirebaseAuth.getInstance()
         user = mAuth.currentUser
 
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+            if (CheckPermission().ischeckandrequestPermission(this@LoginActivity)) {
+            }
+        }
         Log.i("user",user.toString())
         if (user != null) {
             startActivity(Intent(this, MainActivity::class.java))
@@ -61,5 +67,15 @@ class LoginActivity : AppCompatActivity(), CountryCodePicker.OnCountryChangeList
         }
         et_phone.setError("Invalid phone number.")
         return false
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when(requestCode){
+            CheckPermission().PERMISSION_CODE->{
+                if (grantResults.last()>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                }
+            }
+        }
     }
 }
