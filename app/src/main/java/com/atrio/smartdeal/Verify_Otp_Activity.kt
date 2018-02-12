@@ -18,12 +18,6 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
-
-
-
-
-
-
 class Verify_Otp_Activity : AppCompatActivity() {
     var User: FirebaseUser?=null
     lateinit var mAuth: FirebaseAuth
@@ -105,6 +99,7 @@ class Verify_Otp_Activity : AppCompatActivity() {
                     Toast.makeText(this@Verify_Otp_Activity, "Ph number verified", Toast.LENGTH_SHORT).show()
                     intent = Intent(this@Verify_Otp_Activity, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else if (task.getException() is FirebaseAuthInvalidCredentialsException) {
                     Toast.makeText(this@Verify_Otp_Activity, "wrong_verification_code_alert", Toast.LENGTH_SHORT).show()
                 }

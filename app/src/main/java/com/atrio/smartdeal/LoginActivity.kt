@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity(), CountryCodePicker.OnCountryChangeList
         mAuth = FirebaseAuth.getInstance()
         user = mAuth.currentUser
 
+        Log.i("user",user.toString())
         if (user != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
