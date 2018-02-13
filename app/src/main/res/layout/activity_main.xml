@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/innerscreenpng"
-    tools:context="com.atrio.smartdeal.MainActivity"
-    >
+    tools:context="com.atrio.smartdeal.MainActivity">
     <!--
     <EditText
         android:id="@+id/serch_item"

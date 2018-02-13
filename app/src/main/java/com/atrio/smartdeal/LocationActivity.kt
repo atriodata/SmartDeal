@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -12,8 +14,9 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.places.Place
 import com.google.android.gms.location.places.Places
 import com.google.android.gms.location.places.ui.PlacePicker
+import kotlinx.android.synthetic.main.activity_location.*
 
-class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     lateinit var googleApiclient: GoogleApiClient
     private val PLACE_PICKER_REQUEST = 2
@@ -23,12 +26,17 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
         setContentView(R.layout.activity_location)
 
         googleApiclient = GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API).addApi(Places.GEO_DATA_API).addApi(Places.PLACE_DETECTION_API)
                 .build()
 
-        getLocation()
+        et_location.setOnClickListener(View.OnClickListener {
+            getLocation()
+        })
+       btn_locnext.setOnClickListener(View.OnClickListener {
+           intent = Intent(this, MainActivity::class.java)
+           startActivity(intent)
+       })
 
     }
     private fun getLocation() {
@@ -44,10 +52,7 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
             PLACE_PICKER_REQUEST -> {
                 if (resultCode == Activity.RESULT_OK) {
                     val place: Place = PlacePicker.getPlace(data, this)
-
-                  /*  intent = Intent(this, MainActivity::class.java)
-                    intent.putExtra("Address",place.address)
-                    startActivity(intent)*/
+                    et_location.setText(place.address)
                 }
             }
             else -> {
@@ -55,13 +60,7 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
             }
         }
     }
-    override fun onConnected(p0: Bundle?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override fun onConnectionSuspended(p0: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun onConnectionFailed(p0: ConnectionResult) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
