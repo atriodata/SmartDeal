@@ -14,6 +14,6 @@
     <string name="resend_otp">Resend OTP</string>
     <string name="verify_otp">Verify OTP</string>
     <string name="location_text">Your Current Location</string>
-    <string name="verify_location">Click on text to get your current location</string>
+    <string name="verify_location">Get your current location</string>
     <string name="google_map_api">AIzaSyBInq_XolkaulKrtigv7ApdWdkmq6IH9hA</string>
 </resources>

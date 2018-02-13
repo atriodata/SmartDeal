@@ -55,7 +55,7 @@ class CompareActivity : AppCompatActivity() {
                 if (!mpricelist!!.amazon.isEmpty()){
                     linearLayout2.visibility = View.VISIBLE
                     product1.visibility = View.VISIBLE
-                    product1.text="Amazon Price : Rs."+mpricelist!!.amazon
+                    product1.text="Amazon Price : Rs."+mpricelist.amazon
                 }else{
                     product1.visibility = View.INVISIBLE
                 }
