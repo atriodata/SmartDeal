@@ -77,7 +77,6 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
     }
 
     private fun getLocation() {
-        Log.i("intentclick", "getlocation")
         if (GooglePlayServiceCheck().isGooglePlayInstalled(this@LocationActivity)) {
             val builder: PlacePicker.IntentBuilder = PlacePicker.IntentBuilder()
             startActivityForResult(builder.build(this@LocationActivity), PLACE_PICKER_REQUEST)
@@ -89,7 +88,7 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
 
             PLACE_PICKER_REQUEST -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    val place: Place = PlacePicker.getPlace(data, this)
+                    val place: Place = PlacePicker.getPlace(this, data)
                     et_location.setText(place.address)
                 }
             }
@@ -102,14 +101,10 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
     @SuppressLint("MissingPermission")
     override fun onConnected(p0: Bundle?) {
         startLocationUpdates()
-        /*mLocation = LocationServices.FusedLocationApi.getLastLocation(
-                mGoogleApiClient)*/
         val fusedLocationProviderClient:FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fusedLocationProviderClient.getLastLocation()
                 .addOnSuccessListener(this, OnSuccessListener<Location> { location ->
-                    // Got last known location. In some rare situations this can be null.
                     if (location != null) {
-                        // Logic to handle location object
                         mLocation = location
                         getAddress(mLocation.latitude, mLocation.longitude)
                     }
@@ -117,7 +112,6 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
     }
 
     private fun getAddress(latitude: Double, longitude: Double) {
-        Log.i("Address3488: ",""+latitude +"and"+longitude)
 
         var geocoder = Geocoder(this, Locale.getDefault())
 
@@ -147,8 +141,8 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
     }
 
     override fun onLocationChanged(location: Location) {
-        var msg = "Updated Location: Latitude " + location.longitude.toString() + location.longitude
-        getAddress(location.latitude, location.longitude)
+//        var msg = "Updated Location: Latitude " + location.longitude.toString() + location.longitude
+//        getAddress(location.latitude, location.longitude)
 //        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 

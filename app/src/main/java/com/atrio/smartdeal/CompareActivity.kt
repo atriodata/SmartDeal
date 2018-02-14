@@ -47,10 +47,6 @@ class CompareActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<ComapePrice>, response: Response<ComapePrice>) {
-
-                Log.i("getproductList", response.message())
-                Log.i("getproductList11", response.code().toString())
-                Log.i("getproductList1", response.body().toString())
                 var mpricelist=response.body()
                 if (!mpricelist!!.amazon.isEmpty()){
                     linearLayout2.visibility = View.VISIBLE

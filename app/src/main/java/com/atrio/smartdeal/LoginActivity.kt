@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity(), CountryCodePicker.OnCountryChangeList
             finish()
         } else {
             isd_code = sp_country.getSelectedCountryCodeWithPlus()
-            Log.i("onVerify22", "" + isd_code)
             sp_country.setOnCountryChangeListener(this)
             btn_next.setOnClickListener(this)
         }

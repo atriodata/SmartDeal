@@ -30,7 +30,6 @@ class Verify_Otp_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify__otp_)
         phn_no = intent.getStringExtra("phn_number")
-        Log.i("onVerify", "" + this.phn_no)
 
         mAuth = FirebaseAuth.getInstance()
         if (User!=null){
@@ -44,9 +43,8 @@ class Verify_Otp_Activity : AppCompatActivity() {
 
             override fun onVerificationFailed(e: FirebaseException) {
                 if (e is FirebaseAuthInvalidCredentialsException) {
-                    Log.d("Invalid request", "Invalid request")
                 } else if (e is FirebaseTooManyRequestsException) {
-                    Toast.makeText(this@Verify_Otp_Activity, "sms_qutoa_exceeded_alert", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this@Verify_Otp_Activity, "sms_qutoa_exceeded", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -70,7 +68,7 @@ class Verify_Otp_Activity : AppCompatActivity() {
 
         btn_verify.setOnClickListener(View.OnClickListener {
             if (TextUtils.isEmpty(et_otp.getText().toString().trim())) {
-                Toast.makeText(this, "otp_blank_alert", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "otp_blank_", Toast.LENGTH_SHORT).show()
             }
             otp = et_otp.getText().toString().trim()
             signInWithPhoneAuthCredential(PhoneAuthProvider.getCredential(mVerificationId!!,otp!!))
@@ -95,13 +93,12 @@ class Verify_Otp_Activity : AppCompatActivity() {
             override fun onComplete(task: Task<AuthResult>) {
                 if (task.isSuccessful()) {
                     User = (task.getResult() as AuthResult).user
-                    Log.d("", "onComplete: " + User)
                     Toast.makeText(this@Verify_Otp_Activity, "Ph number verified", Toast.LENGTH_SHORT).show()
                     intent = Intent(this@Verify_Otp_Activity, LocationActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else if (task.getException() is FirebaseAuthInvalidCredentialsException) {
-                    Toast.makeText(this@Verify_Otp_Activity, "wrong_verification_code_alert", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Verify_Otp_Activity, "wrong_verification_code", Toast.LENGTH_SHORT).show()
                 }
             }
 

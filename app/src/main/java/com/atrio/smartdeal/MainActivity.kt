@@ -18,24 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
-
-    var searchItem: String? = null
     val BASE_URL = "https://price-api.datayuge.com/"
     val API_KEY = "u6SMILRT5RfgvgnXqQlX3qbrd67ahnZdvhi"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-/*        serch_item.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View, event: MotionEvent): Boolean {
-                if (event.action == MotionEvent.ACTION_UP) {
-                    Log.i("HelloApp", "Welcome")
-                    searchItem = serch_item.text.toString()
-                    getProductSearch()
-                }
-                return false
-            }
-
-        })*/
         search.setOnQueryTextListener(this)
 
         rv_android_list.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
@@ -60,15 +47,11 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
 
             override fun onResponse(call: Call<ProductList>, response: Response<ProductList>) {
-                Log.i("getproductList", response.message())
-                Log.i("getproductList11", response.code().toString())
-                Log.i("getproductList1", response.body().toString())
-                Log.i("getproductList2", response.body()?.data?.size.toString())
-                var mproductlist=response.body()
+                val mproductlist=response.body()
 
                 if (mproductlist!=null){
                 rv_android_list.adapter=CustomAdapter(mproductlist.data,R.layout.custom_recycle_main, applicationContext)
-                Log.i("gotdata23", mproductlist.toString())
+
             } }
 
         })
