@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_map_api"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_map_api" />
 
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -25,9 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".CompareActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Verify_Otp_Activity" />
-        <activity android:name=".LocationActivity"></activity>
+        <activity android:name=".LocationActivity" />
+        <activity android:name=".CategoryActivity"></activity>
     </application>
 
 </manifest>

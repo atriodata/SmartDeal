@@ -59,7 +59,7 @@ class LocationActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailed
             getLocation()
         })
         btn_locnext.setOnClickListener(View.OnClickListener {
-            intent = Intent(this, MainActivity::class.java)
+            intent = Intent(this, CategoryActivity::class.java)
             startActivity(intent)
         })
 

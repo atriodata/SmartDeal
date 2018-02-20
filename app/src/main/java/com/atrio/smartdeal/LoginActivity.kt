@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity(), CountryCodePicker.OnCountryChangeList
 
     override fun onCountrySelected() {
         isd_code = sp_country.getSelectedCountryCodeWithPlus()
-        Toast.makeText(this, "" + sp_country.getSelectedCountryCodeWithPlus(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "" + sp_country.getSelectedCountryCodeWithPlus(), Toast.LENGTH_SHORT).show();
     }
 
     private fun validatePhoneNumber(): Boolean {
