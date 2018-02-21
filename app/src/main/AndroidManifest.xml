@@ -29,7 +29,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Verify_Otp_Activity" />
         <activity android:name=".LocationActivity" />
-        <activity android:name=".CategoryActivity"></activity>
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".ProductListActivity"></activity>
     </application>
 
 </manifest>

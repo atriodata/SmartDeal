@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.atrio.smartdeal.CompareActivity
 import com.atrio.smartdeal.ProductData
+import com.atrio.smartdeal.ProductListActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.category_oneview.view.*
 import kotlinx.android.synthetic.main.custom_recycle_main.view.*
@@ -40,15 +42,17 @@ class CotegoryAdapter(val dataList: List<String>, val rowLayout: Int, val contex
 
     class ProductViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         fun bind(product: String, position: Int) {
-            itemView.tv_catogory.text = product.toString()
-/*
+            var spacereplace=product.replace("_"," ")
+            itemView.tv_catogory.text = spacereplace
+
             itemView.setOnClickListener(View.OnClickListener {
-                Toast.makeText(itemView.context, "click" + position, Toast.LENGTH_SHORT).show()
-                val clickintent = Intent(itemView.context, CompareActivity::class.java)
+
+                val clickintent = Intent(itemView.context, ProductListActivity::class.java)
+                clickintent.putExtra("product_name",product)
+                Log.i("sendintent",product)
                 itemView.context.startActivity(clickintent)
 
             })
-*/
         }
 
     }
