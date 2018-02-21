@@ -17,7 +17,7 @@ class CheckPermission{
    internal fun  ischeckandrequestPermission(appCompatActivity: AppCompatActivity):Boolean {
 
        val permissions = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION,
-               Manifest.permission.ACCESS_FINE_LOCATION)
+               Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.GET_TASKS )
 
        val listPermissionNeeded= ArrayList<String>()
        for (permision in permissions){

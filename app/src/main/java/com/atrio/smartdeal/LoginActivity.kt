@@ -32,9 +32,9 @@ class LoginActivity : AppCompatActivity(), CountryCodePicker.OnCountryChangeList
             if (CheckPermission().ischeckandrequestPermission(this@LoginActivity)) {
             }
         }
-        Log.i("user",user.toString())
+        Log.i("user11",user.toString())
         if (user != null) {
-            startActivity(Intent(this, LocationActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         } else {
             isd_code = sp_country.getSelectedCountryCodeWithPlus()
