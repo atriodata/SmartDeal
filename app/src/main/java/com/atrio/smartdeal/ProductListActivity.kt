@@ -7,13 +7,14 @@ import android.util.Log
 import android.widget.LinearLayout
 import com.atrio.smartdeal.adapter.CotegoryAdapter
 import com.atrio.smartdeal.adapter.DataAdapter
+import com.atrio.smartdeal.model.ProductModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_product_list.*
 
 class ProductListActivity : AppCompatActivity() {
 
     lateinit var rootRef: DatabaseReference
-    var arr: ArrayList<String>? = null
+//    lateinit var arr: List<ProductModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +37,25 @@ class ProductListActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                arr = ArrayList<String>()
+//                arr = List<ProductModel>()
+                val mproduct=ArrayList<ProductModel>()
+                Log.i("mylist56565656",dataSnapshot.value.toString())
+
                 for (dataSnapshot1 in dataSnapshot.children) {
 
-                    var subkey = dataSnapshot1.child("Productname").value.toString()
-                            arr?.add(subkey)
+//                    var subkey = dataSnapshot1.child("Productname").value.toString()
+//                            arr?.add(subkey)
+                    val productModel=dataSnapshot1.getValue(ProductModel::class.java)
+                    Log.i("mylist5656",productModel.toString())
+
+//                    mproduct.add(productModel.Productname)
+                    var subkey = productModel!!.Productname
+                    Log.i("mylist56",subkey)
+                    mproduct.add(productModel)
+//                    arr.ad(subkey)
+//                    arr.addAll()
                 }
-                rv_product_list.adapter = DataAdapter(arr!!, R.layout.category_oneview, applicationContext)
+                rv_product_list.adapter = DataAdapter(mproduct, R.layout.category_oneview, applicationContext)
             }
 
 
