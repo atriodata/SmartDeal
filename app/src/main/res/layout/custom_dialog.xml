@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/dialog_border"
     android:layout_height="match_parent">
 
     <TextView
@@ -15,11 +16,20 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="17sp"
-        android:padding="5dp"
-        android:fontFamily="sans-serif"
+        android:padding="10dp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_one"/>
 
     <TextView
         android:id="@+id/tv_two"
@@ -29,11 +39,20 @@
         android:layout_marginStart="8dp"
         android:text="TextView"
         android:textSize="17sp"
-        android:padding="5dp"
-        android:fontFamily="sans-serif"
+        android:padding="10dp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_one" />
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_two"/>
     <TextView
         android:id="@+id/tv_three"
         android:layout_width="match_parent"
@@ -42,10 +61,11 @@
         android:layout_marginStart="8dp"
         android:text="TextView"
         android:textSize="17sp"
-        android:padding="5dp"
-        android:fontFamily="sans-serif"
+        android:textColor="@color/colorAccent"
+        android:padding="10dp"
+        android:fontFamily="monospace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_two" />
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
 </android.support.constraint.ConstraintLayout>

@@ -30,7 +30,9 @@
         <activity android:name=".Verify_Otp_Activity" />
         <activity android:name=".LocationActivity" />
         <activity android:name=".CategoryActivity" />
-        <activity android:name=".ProductListActivity"></activity>
+        <activity android:name=".ProductListActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import com.atrio.smartdeal.adapter.DataAdapter
 import com.atrio.smartdeal.model.ProductModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_product_list.*
+import java.util.*
 
 class ProductListActivity : AppCompatActivity() {
 
@@ -49,9 +50,11 @@ class ProductListActivity : AppCompatActivity() {
                     Log.i("mylist5656",productModel.toString())
 
 //                    mproduct.add(productModel.Productname)
-                    var subkey = productModel!!.Productname
-                    Log.i("mylist56",subkey)
-                    mproduct.add(productModel)
+                   var subkey = productModel!!.Productname
+
+                    mproduct.add(productModel!!)
+                    //Collections.sort(mproduct)
+                    //Log.i("mylist56",mproduct.toString())
 //                    arr.ad(subkey)
 //                    arr.addAll()
                 }

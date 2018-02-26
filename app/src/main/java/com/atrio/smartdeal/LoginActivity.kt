@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity(), CountryCodePicker.OnCountryChangeList
         }
         Log.i("user11",user.toString())
         if (user != null) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, CategoryActivity::class.java))
             finish()
         } else {
             isd_code = sp_country.getSelectedCountryCodeWithPlus()
